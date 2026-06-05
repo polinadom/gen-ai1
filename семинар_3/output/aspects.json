@@ -1,0 +1,72 @@
+[
+  {
+    "author": "Дмитрий",
+    "aspects": []
+  },
+  {
+    "author": "Павел",
+    "aspects": []
+  },
+  {
+    "author": "Анна",
+    "aspects": []
+  },
+  {
+    "author": "Александр",
+    "aspects": []
+  },
+  {
+    "author": "Дмитрий",
+    "aspects": []
+  },
+  {
+    "author": "Дмитрий",
+    "aspects": [
+      {
+        "aspect": "design",
+        "sentiment": "positive",
+        "quote": "Интерфейс удобный",
+        "confidence": 0.95
+      },
+      {
+        "aspect": "performance",
+        "sentiment": "negative",
+        "quote": "переводы бесят — то долго идут, то вообще ошибка вылетает",
+        "confidence": 0.95
+      }
+    ]
+  },
+  {
+    "author": "Марина",
+    "aspects": [
+      {
+        "aspect": "performance",
+        "sentiment": "positive",
+        "quote": "работает шустро",
+        "confidence": 0.95
+      },
+      {
+        "aspect": "performance",
+        "sentiment": "negative",
+        "quote": "иногда зависает",
+        "confidence": 0.95
+      }
+    ]
+  },
+  {
+    "author": "Дмитрий",
+    "aspects": []
+  },
+  {
+    "author": "Екатерина",
+    "aspects": []
+  },
+  {
+    "author": "Дмитрий",
+    "aspects": []
+  },
+  {
+    "author": "Анна",
+    "aspects": []
+  }
+]
