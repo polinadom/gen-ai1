@@ -289,3 +289,105 @@ def calculate(expression: str) -> dict:
         return {"expression": expression, "result": round(val, 6)}
     except Exception as e:
         return {"error": f"{type(e).__name__}: {e}"}
+
+# ===========================================================================
+# 5. Сравнение периодов
+# ===========================================================================
+
+def compare_periods(metric: str, period_a: str, period_b: str) -> dict:
+    """
+    Сравнить значение макро-показателя в двух периодах.
+    
+    Args:
+        metric: "key_rate" | "fx_USD" | "fx_EUR" | "fx_CNY" | "cpi" | "unemployment"
+        period_a: дата в формате YYYY-MM-DD или YYYY-MM
+        period_b: дата в формате YYYY-MM-DD или YYYY-MM
+    
+    Returns:
+        {
+            "metric": "...",
+            "a": {"date": "...", "value": ...},
+            "b": {"date": "...", "value": ...},
+            "delta": ...,
+            "ratio": ...,
+            "source": "..."
+        }
+    """
+    # Маппинг метрик на функции и аргументы
+    metric_map = {
+        "fx_USD": (get_fx_rate, {"currency": "USD"}),
+        "fx_EUR": (get_fx_rate, {"currency": "EUR"}),
+        "fx_CNY": (get_fx_rate, {"currency": "CNY"}),
+        "key_rate": (get_key_rate, {}),
+        "cpi": (get_inflation, {}),
+        "unemployment": (get_unemployment, {}),
+    }
+    
+    if metric not in metric_map:
+        return {"error": f"Неизвестная метрика: {metric}. Допустимые: {list(metric_map.keys())}"}
+    
+    func, base_args = metric_map[metric]
+    
+    # Функция для получения значения
+    def get_value(period: str):
+        # Определяем, какой формат даты
+        if len(period) == 7 and period[4] == '-':  # YYYY-MM
+            year, month = map(int, period.split('-'))
+            # Для валют используем on_date с последним днем месяца
+            if metric in ["fx_USD", "fx_EUR", "fx_CNY"]:
+                # Берем последний день месяца
+                from datetime import date
+                import calendar
+                last_day = calendar.monthrange(year, month)[1]
+                date_str = f"{year}-{month:02d}-{last_day:02d}"
+                args = {**base_args, "on_date": date_str}
+                result = func(**args)
+                if "error" in result:
+                    return None, result["error"]
+                value = result.get("rate")
+                return value, None
+            else:
+                # Для остальных метрик используем year/month
+                args = {**base_args, "year": year, "month": month}
+                result = func(**args)
+                if "error" in result:
+                    return None, result["error"]
+                # Извлекаем значение в зависимости от метрики
+                if metric == "cpi":
+                    value = result.get("cpi_yoy")
+                elif metric == "unemployment":
+                    value = result.get("unemployment")
+                else:
+                    value = result.get("rate")
+                return value, None
+        else:  # YYYY-MM-DD
+            args = {**base_args, "on_date": period}
+            result = func(**args)
+            if "error" in result:
+                return None, result["error"]
+            value = result.get("rate")
+            return value, None
+    
+    # Получаем значения для обоих периодов
+    value_a, error_a = get_value(period_a)
+    value_b, error_b = get_value(period_b)
+    
+    if error_a:
+        return {"error": f"Ошибка получения данных для периода A ({period_a}): {error_a}"}
+    if error_b:
+        return {"error": f"Ошибка получения данных для периода B ({period_b}): {error_b}"}
+    
+    if value_a is None or value_b is None:
+        return {"error": "Не удалось получить значения для одного из периодов"}
+    
+    # Собираем результат
+    result = {
+        "metric": metric,
+        "a": {"date": period_a, "value": value_a},
+        "b": {"date": period_b, "value": value_b},
+        "delta": round(value_b - value_a, 4),
+        "ratio": round(value_b / value_a, 4) if value_a != 0 else None,
+        "source": "compare_periods"
+    }
+    
+    return result

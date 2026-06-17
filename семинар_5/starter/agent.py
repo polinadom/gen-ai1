@@ -21,6 +21,7 @@ import argparse
 import datetime
 import json
 import sys
+import uuid
 from concurrent.futures import ThreadPoolExecutor
 from json.decoder import JSONDecodeError
 from pathlib import Path
@@ -32,7 +33,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from llm_client import get_model, make_client, make_raw_client
 from schemas import TOOL_SCHEMAS
-from tools import calculate, get_fx_rate, get_inflation, get_key_rate, get_unemployment
+from tools import calculate, get_fx_rate, get_inflation, get_key_rate, get_unemployment, compare_periods
 
 # набор инструментов
 TOOLS_IMPL = {
@@ -40,9 +41,17 @@ TOOLS_IMPL = {
     "get_key_rate": get_key_rate,
     "get_inflation": get_inflation,
     "get_unemployment": get_unemployment,
+    "compare_periods": compare_periods,
     "calculate": calculate,
 }
 
+# Логирование шагов в JSONL
+def write_trace_log(run_id: str, entry: dict, trace_file: str = "trace.jsonl"):
+    """Записать событие в JSONL лог"""
+    entry["run_id"] = run_id
+    entry["ts"] = datetime.datetime.now().isoformat()
+    with open(trace_file, "a", encoding="utf-8") as f:
+        f.write(json.dumps(entry, ensure_ascii=False) + "\n")
 
 # блок 7 — структурированный ответ
 class AgentAnswer(BaseModel):
@@ -104,6 +113,7 @@ _BASE_RULES = """\
 - get_key_rate: ключевая ставка Цб на дату
 - get_inflation: ИПЦ (% г/г) на конец месяца
 - get_unemployment: безработица (% рабочей силы) на конец месяца
+- compare_periods: сравнить значение метрики в двух периодах
 - calculate: безопасный калькулятор для арифметики над полученными числами
 
 Алгоритм:
@@ -252,6 +262,7 @@ def run_agent(
     verbose: bool = True,
 ) -> dict[str, Any]:
     """ReAct-цикл. базовый режим — финал текстом; флаги включают блоки 6-10."""
+    run_id = str(uuid.uuid4())
     client = make_raw_client()
     model = get_model()
     tools = TOOL_SCHEMAS + ([SUBMIT_SCHEMA] if structured else [])
@@ -295,6 +306,11 @@ def run_agent(
 
         if not msg.tool_calls:
             trace.append({"step": step, "final": msg.content})
+            # Логируем финальный ответ
+            write_trace_log(run_id, {
+                "step": step,
+                "final": msg.content
+            })
             return _finish(
                 {
                     "answer": msg.content,
@@ -331,6 +347,13 @@ def run_agent(
                 trace.append(
                     {"step": step, "call": tc.function.name, "args": args, "obs": obs}
                 )
+                # Логируем вызов инструмента
+                write_trace_log(run_id, {
+                    "step": step,
+                    "call": tc.function.name,
+                    "args": args,
+                    "obs": obs
+                })
                 if verbose:
                     print(
                         f"    {tc.function.name}({args}) -> {json.dumps(obs, ensure_ascii=False)[:140]}"
@@ -366,6 +389,12 @@ def run_agent(
             messages.append(
                 {"role": "tool", "tool_call_id": submit.id, "content": "ответ принят"}
             )
+            # Логируем структурированный ответ
+            write_trace_log(run_id, {
+                "step": step,
+                "final": ans.answer,
+                "structured": ans.model_dump()
+            })
             return _finish(
                 {
                     "answer": ans.answer,
