@@ -1,0 +1,18 @@
+id,type,ok,steps,tools,path,elapsed_sec
+R1,rag,False,1,"rag_retrieve|rag_generate",retrieve(8 chunks) -> generate,3.86
+R2,rag,True,1,"rag_retrieve|rag_generate",retrieve(8 chunks) -> generate,2.05
+R3,rag,True,1,"rag_retrieve|rag_generate",retrieve(8 chunks) -> generate,2.49
+R4,rag,True,1,"rag_retrieve|rag_generate",retrieve(8 chunks) -> generate,1.55
+R5,rag,True,1,"rag_retrieve|rag_generate",retrieve(8 chunks) -> generate,1.93
+A1,agent,True,2,"get_service_stats",agent(2 steps, tools=['get_service_stats']),3.41
+A2,agent,True,2,"compare_services",agent(2 steps, tools=['compare_services']),4.43
+A3,agent,True,5,"search_reviews|search_reviews|search_reviews|search_reviews|get_service_stats|get_service_stats|get_service_stats|search_reviews|search_reviews",agent(5 steps, tools=['search_reviews', 'search_reviews', 'search_reviews', 'search_reviews', 'get_service_stats', 'get_service_stats', 'get_service_stats', 'search_reviews', 'search_reviews']),15.08
+A4,agent,False,3,"get_service_stats|get_service_stats|search_reviews|search_reviews",agent(3 steps, tools=['get_service_stats', 'get_service_stats', 'search_reviews', 'search_reviews']),7.02
+A5,agent,True,6,"search_reviews|search_reviews|search_reviews|search_reviews|get_service_stats|get_service_stats|get_service_stats|search_reviews|search_reviews|search_reviews|search_reviews|search_reviews|search_reviews",agent(6 steps, tools=['search_reviews', 'search_reviews', 'search_reviews', 'search_reviews', 'get_service_stats', 'get_service_stats', 'get_service_stats', 'search_reviews', 'search_reviews', 'search_reviews', 'search_reviews', 'search_reviews', 'search_reviews']),17.33
+A6,agent,True,2,"get_service_stats",agent(2 steps, tools=['get_service_stats']),3.57
+A7,agent,True,3,"get_service_stats|get_service_stats|calculate",agent(3 steps, tools=['get_service_stats', 'get_service_stats', 'calculate']),5.26
+M1,multi,True,1,"search_reviews|get_service_stats|compare_services|calculate",pwc(iter=1, subs=4),42.72
+M2,multi,True,1,"search_reviews|get_service_stats|compare_services",pwc(iter=1, subs=2),36.8
+P1,pipeline,True,0,"pipeline",pipeline_check(review_count),
+P2,pipeline,True,0,"pipeline",pipeline_check(ghost_rate),
+P3,pipeline,True,0,"pipeline",pipeline_check(judge_score),

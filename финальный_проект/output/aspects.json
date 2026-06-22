@@ -1,0 +1,463 @@
+[
+  {
+    "author": "Марина К.",
+    "aspects": [
+      {
+        "aspect": "delivery_speed",
+        "sentiment": "negative",
+        "quote": "курьер приехал через 75 минут",
+        "confidence": 1.0
+      },
+      {
+        "aspect": "food_quality",
+        "sentiment": "negative",
+        "quote": "Рис был комнатной температуры, соевый соус пролился по пакету",
+        "confidence": 1.0
+      },
+      {
+        "aspect": "price",
+        "sentiment": "negative",
+        "quote": "За такие деньги ожидала лучшего",
+        "confidence": 0.8
+      }
+    ]
+  },
+  {
+    "author": "Алексей П.",
+    "aspects": [
+      {
+        "aspect": "delivery_speed",
+        "sentiment": "positive",
+        "quote": "молоко и хлеб за 15 минут",
+        "confidence": 1.0
+      },
+      {
+        "aspect": "app_ui",
+        "sentiment": "positive",
+        "quote": "Приложение быстрое",
+        "confidence": 0.9
+      },
+      {
+        "aspect": "price",
+        "sentiment": "positive",
+        "quote": "промокоды частые",
+        "confidence": 0.8
+      }
+    ]
+  },
+  {
+    "author": "Ольга С.",
+    "aspects": [
+      {
+        "aspect": "courier",
+        "sentiment": "negative",
+        "quote": "курьер не находит подъезд",
+        "confidence": 1.0
+      },
+      {
+        "aspect": "support",
+        "sentiment": "negative",
+        "quote": "Поддержка отвечает шаблонами, возврат оформили только после трёх обращений",
+        "confidence": 1.0
+      }
+    ]
+  },
+  {
+    "author": "Дмитрий В.",
+    "aspects": [
+      {
+        "aspect": "delivery_speed",
+        "sentiment": "positive",
+        "quote": "Доставка обычно 35-40 минут",
+        "confidence": 0.9
+      },
+      {
+        "aspect": "price",
+        "sentiment": "negative",
+        "quote": "комиссия сервиса выросла — теперь заказ на 1500 руб обходится дороже",
+        "confidence": 1.0
+      }
+    ]
+  },
+  {
+    "author": "Екатерина Л.",
+    "aspects": [
+      {
+        "aspect": "app_ui",
+        "sentiment": "negative",
+        "quote": "Приложение после обновления стало тормозить на старом Android. Корзина иногда сбрасывается",
+        "confidence": 1.0
+      },
+      {
+        "aspect": "food_quality",
+        "sentiment": "positive",
+        "quote": "ассортимент свежий, овощи всегда нормальные",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "author": "Игорь Н.",
+    "aspects": [
+      {
+        "aspect": "food_quality",
+        "sentiment": "negative",
+        "quote": "Пицца приехала холодной и с помятым тестом",
+        "confidence": 1.0
+      },
+      {
+        "aspect": "courier",
+        "sentiment": "negative",
+        "quote": "Курьер бросил пакет у двери без звонка",
+        "confidence": 1.0
+      },
+      {
+        "aspect": "price",
+        "sentiment": "negative",
+        "quote": "За доставку взяли 299 руб — несоразмерно",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "author": "Анна Р.",
+    "aspects": [
+      {
+        "aspect": "delivery_speed",
+        "sentiment": "positive",
+        "quote": "суши-бар «Токио» всегда вовремя",
+        "confidence": 0.9
+      },
+      {
+        "aspect": "app_ui",
+        "sentiment": "positive",
+        "quote": "Трекинг курьера удобный",
+        "confidence": 0.9
+      },
+      {
+        "aspect": "support",
+        "sentiment": "positive",
+        "quote": "Поддержка один раз вернула деньги за опоздание без лишних вопросов",
+        "confidence": 1.0
+      }
+    ]
+  },
+  {
+    "author": "Павел М.",
+    "aspects": [
+      {
+        "aspect": "food_quality",
+        "sentiment": "negative",
+        "quote": "Дважды привезли просроченный творог. На этикетке дата вчерашняя",
+        "confidence": 1.0
+      },
+      {
+        "aspect": "support",
+        "sentiment": "negative",
+        "quote": "Фото отправил в чат — ответили через сутки",
+        "confidence": 1.0
+      }
+    ]
+  },
+  {
+    "author": "Юлия Т.",
+    "aspects": [
+      {
+        "aspect": "price",
+        "sentiment": "positive",
+        "quote": "Нравится подписка с бесплатной доставкой",
+        "confidence": 0.9
+      },
+      {
+        "aspect": "courier",
+        "sentiment": "positive",
+        "quote": "Курьеры вежливые, звонят заранее",
+        "confidence": 1.0
+      }
+    ]
+  },
+  {
+    "author": "Сергей Б.",
+    "aspects": [
+      {
+        "aspect": "app_ui",
+        "sentiment": "negative",
+        "quote": "Интерфейс перегружен баннерами и рекламой ресторанов-партнёров. Сложно найти прошлый заказ",
+        "confidence": 1.0
+      },
+      {
+        "aspect": "delivery_speed",
+        "sentiment": "neutral",
+        "quote": "скорость — средне, 45 минут в будни",
+        "confidence": 0.8
+      },
+      {
+        "aspect": "food_quality",
+        "sentiment": "neutral",
+        "quote": "Сама еда ... средне",
+        "confidence": 0.7
+      }
+    ]
+  },
+  {
+    "author": "Наталья Г.",
+    "aspects": [
+      {
+        "aspect": "price",
+        "sentiment": "negative",
+        "quote": "Цены выросли на 20% за полгода. Минимальная корзина 900 руб — для одного человека невыгодно",
+        "confidence": 1.0
+      }
+    ]
+  },
+  {
+    "author": "Виктор Х.",
+    "aspects": [
+      {
+        "aspect": "delivery_speed",
+        "sentiment": "positive",
+        "quote": "Быстрая доставка продуктов из Перекрёстка: 25 минут в среднем",
+        "confidence": 1.0
+      },
+      {
+        "aspect": "app_ui",
+        "sentiment": "positive",
+        "quote": "Приложение стабильное, push-уведомления о статусе точные",
+        "confidence": 1.0
+      }
+    ]
+  },
+  {
+    "author": "Алина Ф.",
+    "aspects": [
+      {
+        "aspect": "delivery_speed",
+        "sentiment": "negative",
+        "quote": "Заказ отменили через 40 минут ожидания",
+        "confidence": 1.0
+      },
+      {
+        "aspect": "support",
+        "sentiment": "negative",
+        "quote": "Компенсация 100 баллов Плюса, этого мало",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "author": "Роман Д.",
+    "aspects": [
+      {
+        "aspect": "courier",
+        "sentiment": "positive",
+        "quote": "Курьеры почти всегда вежливые, несут пакеты до двери",
+        "confidence": 1.0
+      },
+      {
+        "aspect": "food_quality",
+        "sentiment": "negative",
+        "quote": "Иногда путают позиции — заменяют без согласования",
+        "confidence": 0.9
+      },
+      {
+        "aspect": "support",
+        "sentiment": "positive",
+        "quote": "возврат оформляют быстро",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "author": "Татьяна Ж.",
+    "aspects": [
+      {
+        "aspect": "food_quality",
+        "sentiment": "neutral",
+        "quote": "Еда из ресторанов нормальная",
+        "confidence": 0.8
+      },
+      {
+        "aspect": "app_ui",
+        "sentiment": "negative",
+        "quote": "приложение вылетает при оплате картой",
+        "confidence": 1.0
+      },
+      {
+        "aspect": "delivery_speed",
+        "sentiment": "negative",
+        "quote": "Доставка 50-60 минут — дольше, чем у Яндекс Еды",
+        "confidence": 1.0
+      }
+    ]
+  },
+  {
+    "author": "Михаил О.",
+    "aspects": [
+      {
+        "aspect": "courier",
+        "sentiment": "negative",
+        "quote": "Курьер грубо ответил на просьбу подняться на этаж",
+        "confidence": 1.0
+      },
+      {
+        "aspect": "support",
+        "sentiment": "negative",
+        "quote": "Чат поддержки закрыл тикет, не разобравшись",
+        "confidence": 1.0
+      }
+    ]
+  },
+  {
+    "author": "Светлана Е.",
+    "aspects": [
+      {
+        "aspect": "delivery_speed",
+        "sentiment": "positive",
+        "quote": "10-20 минут ночью",
+        "confidence": 1.0
+      },
+      {
+        "aspect": "price",
+        "sentiment": "neutral",
+        "quote": "Цены чуть выше магазина, но экономия времени того стоит",
+        "confidence": 0.8
+      }
+    ]
+  },
+  {
+    "author": "Артём Ц.",
+    "aspects": [
+      {
+        "aspect": "price",
+        "sentiment": "negative",
+        "quote": "Скрытая сервисная комиссия в чеке — узнал только после оплаты",
+        "confidence": 1.0
+      },
+      {
+        "aspect": "support",
+        "sentiment": "negative",
+        "quote": "Поддержка сослалась на «условия акции». Прозрачности нет",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "author": "Вера К.",
+    "aspects": [
+      {
+        "aspect": "app_ui",
+        "sentiment": "positive",
+        "quote": "Удобный фильтр по времени доставки",
+        "confidence": 0.9
+      },
+      {
+        "aspect": "food_quality",
+        "sentiment": "positive",
+        "quote": "Бургеры из «Black Star» горячие",
+        "confidence": 1.0
+      },
+      {
+        "aspect": "app_ui",
+        "sentiment": "negative",
+        "quote": "навязчивые пуши о скидках каждый день",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "author": "Глеб Ш.",
+    "aspects": [
+      {
+        "aspect": "delivery_speed",
+        "sentiment": "negative",
+        "quote": "Доставка заявлена 15 минут, фактически 40",
+        "confidence": 1.0
+      }
+    ]
+  },
+  {
+    "author": "Лидия П.",
+    "aspects": [
+      {
+        "aspect": "food_quality",
+        "sentiment": "negative",
+        "quote": "Салат приехал с посторонним предметом внутри",
+        "confidence": 1.0
+      },
+      {
+        "aspect": "support",
+        "sentiment": "negative",
+        "quote": "предложили купон 200 руб. Отказалась",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "author": "Константин У.",
+    "aspects": [
+      {
+        "aspect": "price",
+        "sentiment": "positive",
+        "quote": "Плюс подписка окупается: бесплатная доставка от 800 руб",
+        "confidence": 1.0
+      },
+      {
+        "aspect": "food_quality",
+        "sentiment": "positive",
+        "quote": "Рестораны проверенные, рейтинги в приложении честные",
+        "confidence": 0.8
+      }
+    ]
+  },
+  {
+    "author": "Полина Я.",
+    "aspects": [
+      {
+        "aspect": "support",
+        "sentiment": "negative",
+        "quote": "Поддержка в чате отвечает роботом первые 5 минут. Живой оператор помог только с третьей попытки",
+        "confidence": 1.0
+      },
+      {
+        "aspect": "food_quality",
+        "sentiment": "positive",
+        "quote": "Продукты хорошие",
+        "confidence": 0.8
+      }
+    ]
+  },
+  {
+    "author": "Фёдор З.",
+    "aspects": [
+      {
+        "aspect": "price",
+        "sentiment": "positive",
+        "quote": "у Купера дешевле продукты из супермаркета",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "author": "Дарья Ч.",
+    "aspects": [
+      {
+        "aspect": "app_ui",
+        "sentiment": "negative",
+        "quote": "Приложение зависло при выборе адреса, заказ ушёл на старый",
+        "confidence": 1.0
+      },
+      {
+        "aspect": "courier",
+        "sentiment": "negative",
+        "quote": "Курьер приехал не туда",
+        "confidence": 1.0
+      },
+      {
+        "aspect": "support",
+        "sentiment": "negative",
+        "quote": "Исправили только после звонка в поддержку",
+        "confidence": 0.9
+      }
+    ]
+  }
+]

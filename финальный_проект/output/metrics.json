@@ -1,0 +1,11 @@
+{
+  "input_reviews": 25,
+  "valid_reviews": 25,
+  "validation_errors": 0,
+  "ghost_quotes": 1,
+  "total_quotes": 87,
+  "ghost_quote_rate_pct": 1.1,
+  "overall_judge_score": 0.9,
+  "rag_chunks": 25,
+  "elapsed_sec": 70.4
+}

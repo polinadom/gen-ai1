@@ -1,0 +1,288 @@
+{
+  "total": 17,
+  "passed": 15,
+  "pass_rate_pct": 88.2,
+  "results": [
+    {
+      "id": "R1",
+      "type": "rag",
+      "query": "Кто жаловался на холодную еду?",
+      "ok": false,
+      "answer": "Никто из представленных отзывов не содержит жалоб на холодную еду.",
+      "confidence": 1.0,
+      "ghost_quotes": 1,
+      "retrieved_chunks": 8,
+      "steps": 1,
+      "tools_used": [
+        "rag_retrieve",
+        "rag_generate"
+      ],
+      "elapsed_sec": 3.86,
+      "path": "retrieve(8 chunks) -> generate"
+    },
+    {
+      "id": "R2",
+      "type": "rag",
+      "query": "Какие проблемы с поддержкой упоминают пользователи?",
+      "ok": true,
+      "answer": "Пользователи жалуются на шаблонные ответы поддержки, долгое время реакции и сложности с возвратом средств.",
+      "confidence": 0.9,
+      "ghost_quotes": 0,
+      "retrieved_chunks": 8,
+      "steps": 1,
+      "tools_used": [
+        "rag_retrieve",
+        "rag_generate"
+      ],
+      "elapsed_sec": 2.05,
+      "path": "retrieve(8 chunks) -> generate"
+    },
+    {
+      "id": "R3",
+      "type": "rag",
+      "query": "Что пишут про Самокат и скорость доставки?",
+      "ok": true,
+      "answer": "Отзывы о скорости доставки Самоката противоречивы: некоторые пользователи хвалят быструю доставку (10-20 минут ночью, 15 минут), другие жалуются на задержки (фактически 40 минут вместо заявленных 15).",
+      "confidence": 0.9,
+      "ghost_quotes": 0,
+      "retrieved_chunks": 8,
+      "steps": 1,
+      "tools_used": [
+        "rag_retrieve",
+        "rag_generate"
+      ],
+      "elapsed_sec": 2.49,
+      "path": "retrieve(8 chunks) -> generate"
+    },
+    {
+      "id": "R4",
+      "type": "rag",
+      "query": "Жалобы на курьеров Яндекс Еды",
+      "ok": true,
+      "answer": "Да, есть жалобы на курьеров Яндекс Еды. В отзыве Михаила О. (рейтинг 2) указано, что курьер грубо ответил на просьбу подняться на этаж.",
+      "confidence": 1.0,
+      "ghost_quotes": 0,
+      "retrieved_chunks": 8,
+      "steps": 1,
+      "tools_used": [
+        "rag_retrieve",
+        "rag_generate"
+      ],
+      "elapsed_sec": 1.55,
+      "path": "retrieve(8 chunks) -> generate"
+    },
+    {
+      "id": "R5",
+      "type": "rag",
+      "query": "Проблемы с приложением и интерфейсом",
+      "ok": true,
+      "answer": "В отзывах упоминаются проблемы с приложением: у Самоката после обновления приложение тормозит на старом Android и корзина иногда сбрасывается (review_5).",
+      "confidence": 0.9,
+      "ghost_quotes": 0,
+      "retrieved_chunks": 8,
+      "steps": 1,
+      "tools_used": [
+        "rag_retrieve",
+        "rag_generate"
+      ],
+      "elapsed_sec": 1.93,
+      "path": "retrieve(8 chunks) -> generate"
+    },
+    {
+      "id": "A1",
+      "type": "agent",
+      "query": "Какой средний рейтинг у Самоката?",
+      "ok": true,
+      "answer": "Средний рейтинг Самоката составляет 3.12 из 5.",
+      "tools_used": [
+        "get_service_stats"
+      ],
+      "steps": 2,
+      "tokens": 1860,
+      "suspicious_numbers": 0,
+      "elapsed_sec": 3.41,
+      "path": "agent(2 steps, tools=['get_service_stats'])"
+    },
+    {
+      "id": "A2",
+      "type": "agent",
+      "query": "Сравни Яндекс Еду и Купер по среднему рейтингу",
+      "ok": true,
+      "answer": "Средний рейтинг Яндекс Еды — 3.11, у Купера — 2.88. Разница составляет 0.23 в пользу Яндекс Еды.",
+      "tools_used": [
+        "compare_services"
+      ],
+      "steps": 2,
+      "tokens": 2132,
+      "suspicious_numbers": 0,
+      "elapsed_sec": 4.43,
+      "path": "agent(2 steps, tools=['compare_services'])"
+    },
+    {
+      "id": "A3",
+      "type": "agent",
+      "query": "Сколько отзывов в корпусе про опоздания доставки?",
+      "ok": true,
+      "answer": "В корпусе найдено 3 отзыва, явно связанных с опозданиями доставки: 2 в Яндекс Еде (курьер приехал через 75 минут; возврат денег за опоздание) и 1 в Самокате (доставка заявлена 15 мин, фактически 40).",
+      "tools_used": [
+        "search_reviews",
+        "search_reviews",
+        "search_reviews",
+        "search_reviews",
+        "get_service_stats",
+        "get_service_stats",
+        "get_service_stats",
+        "search_reviews",
+        "search_reviews"
+      ],
+      "steps": 5,
+      "tokens": 15291,
+      "suspicious_numbers": 0,
+      "elapsed_sec": 15.08,
+      "path": "agent(5 steps, tools=['search_reviews', 'search_reviews', 'search_reviews', 'search_reviews', 'get_service_stats', 'get_service_stats', 'get_service_stats', 'search_reviews', 'search_reviews'])"
+    },
+    {
+      "id": "A4",
+      "type": "agent",
+      "query": "Какой сервис имеет больше жалоб на цену — Самокат или Яндекс Еда?",
+      "ok": false,
+      "answer": "Больше жалоб на цену у Яндекс Еды — 2 жалобы против 1 у Самоката.",
+      "tools_used": [
+        "get_service_stats",
+        "get_service_stats",
+        "search_reviews",
+        "search_reviews"
+      ],
+      "steps": 3,
+      "tokens": 4882,
+      "suspicious_numbers": 0,
+      "elapsed_sec": 7.02,
+      "path": "agent(3 steps, tools=['get_service_stats', 'get_service_stats', 'search_reviews', 'search_reviews'])"
+    },
+    {
+      "id": "A5",
+      "type": "agent",
+      "query": "Найди отзывы про просроченные продукты",
+      "ok": true,
+      "answer": "В корпусе отзывов найден 1 прямой отзыв о просроченных продуктах. Автор Павел М. сообщает, что сервис Самокат дважды привёз просроченный творог (дата на этикетке была вчерашняя). Поддержка ответила то",
+      "tools_used": [
+        "search_reviews",
+        "search_reviews",
+        "search_reviews",
+        "search_reviews",
+        "get_service_stats",
+        "get_service_stats",
+        "get_service_stats",
+        "search_reviews",
+        "search_reviews",
+        "search_reviews",
+        "search_reviews",
+        "search_reviews",
+        "search_reviews"
+      ],
+      "steps": 6,
+      "tokens": 12452,
+      "suspicious_numbers": 0,
+      "elapsed_sec": 17.33,
+      "path": "agent(6 steps, tools=['search_reviews', 'search_reviews', 'search_reviews', 'search_reviews', 'get_service_stats', 'get_service_stats', 'get_service_stats', 'search_reviews', 'search_reviews', 'search_reviews', 'search_reviews', 'search_reviews', 'search_reviews'])"
+    },
+    {
+      "id": "A6",
+      "type": "agent",
+      "query": "Статистика отзывов по Куперу: рейтинг и топ проблем",
+      "ok": true,
+      "answer": "Вот статистика отзывов по сервису **Купер**:\n\n- **Средний рейтинг:** ⭐ **2.88** (на основе 8 отзывов)\n- **Топ-проблемы:**\n  1. **Поддержка (support)** — 3 упоминания\n  2. **Курьер (courier)** — 2 упом",
+      "tools_used": [
+        "get_service_stats"
+      ],
+      "steps": 2,
+      "tokens": 1906,
+      "suspicious_numbers": 0,
+      "elapsed_sec": 3.57,
+      "path": "agent(2 steps, tools=['get_service_stats'])"
+    },
+    {
+      "id": "A7",
+      "type": "agent",
+      "query": "На сколько звёзд выше рейтинг Яндекс Еды чем у Купера?",
+      "ok": true,
+      "answer": "Рейтинг Яндекс Еды выше рейтинга Купера на 0.23 звезды.",
+      "tools_used": [
+        "get_service_stats",
+        "get_service_stats",
+        "calculate"
+      ],
+      "steps": 3,
+      "tokens": 3370,
+      "suspicious_numbers": 1,
+      "elapsed_sec": 5.26,
+      "path": "agent(3 steps, tools=['get_service_stats', 'get_service_stats', 'calculate'])"
+    },
+    {
+      "id": "M1",
+      "type": "multi",
+      "query": "Какой сервис лучше по отзывам: Самокат или Яндекс Еда, и почему?",
+      "ok": true,
+      "answer": "По отзывам, сервисы практически равны: средняя оценка Самоката — 3.12 из 5, а Яндекс Еды — 3.11 из 5, при этом выборка отзывов очень мала (8 и 9 соответственно). Однако качественно Самокат выглядит чу",
+      "tools_used": [
+        "search_reviews",
+        "get_service_stats",
+        "compare_services",
+        "calculate"
+      ],
+      "steps": 1,
+      "subquestions": 4,
+      "elapsed_sec": 42.72,
+      "path": "pwc(iter=1, subs=4)"
+    },
+    {
+      "id": "M2",
+      "type": "multi",
+      "query": "Сравни три сервиса по скорости доставки и качеству еды",
+      "ok": true,
+      "answer": "По скорости доставки лидирует **Самокат** (10–20 минут), за ним следует **Яндекс Еда** (35–45 минут), а замыкает **Купер** (50–60 минут). Что касается качества еды, то **Самокат** и **Яндекс Еда** име",
+      "tools_used": [
+        "search_reviews",
+        "get_service_stats",
+        "compare_services"
+      ],
+      "steps": 1,
+      "subquestions": 2,
+      "elapsed_sec": 36.8,
+      "path": "pwc(iter=1, subs=2)"
+    },
+    {
+      "id": "P1",
+      "type": "pipeline",
+      "ok": true,
+      "detail": "valid_reviews=25",
+      "steps": 0,
+      "tools_used": [
+        "pipeline"
+      ],
+      "path": "pipeline_check(review_count)"
+    },
+    {
+      "id": "P2",
+      "type": "pipeline",
+      "ok": true,
+      "detail": "ghost_rate=1.1%",
+      "steps": 0,
+      "tools_used": [
+        "pipeline"
+      ],
+      "path": "pipeline_check(ghost_rate)"
+    },
+    {
+      "id": "P3",
+      "type": "pipeline",
+      "ok": true,
+      "detail": "judge_score=0.9",
+      "steps": 0,
+      "tools_used": [
+        "pipeline"
+      ],
+      "path": "pipeline_check(judge_score)"
+    }
+  ]
+}
